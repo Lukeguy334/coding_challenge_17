@@ -43,3 +43,22 @@ class SalesRep {
 const rep1 = new SalesRep("John Doe");
 rep1.addClient(customer1);
 console.log(`Sales Rep: ${rep1.name}, Client Total for Alice: $${rep1.getClientTotal("Alice Johnson")}`);
+
+// Task 3: Create a VIPCustomer Class (Extends Customer)
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel;
+    }
+    
+    getTotalSpent() {
+        const totalSpent = super.getTotalSpent();
+        return totalSpent * 1.1; // 10% loyalty bonus
+    }
+}
+
+// Logging
+const vipCustomer = new VIPCustomer("Bob Smith", "bob@example.com", "Gold");
+vipCustomer.addPurchase(600);
+vipCustomer.addPurchase(300);
+console.log(`VIP Customer: ${vipCustomer.name}, Total Spent with Bonus: $${vipCustomer.getTotalSpent()}`);
